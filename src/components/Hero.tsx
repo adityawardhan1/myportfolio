@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowDown } from 'react-icons/fi';
@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
             setScrambledText(
                 finalText
                     .split('')
-                    .map((char, index) => {
+                    .map((_, index) => {
                         if (index < iteration) {
                             return finalText[index];
                         }

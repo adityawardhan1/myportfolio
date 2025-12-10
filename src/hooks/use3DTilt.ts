@@ -1,4 +1,4 @@
-import { useEffect, RefObject } from 'react';
+import { useEffect, type RefObject } from 'react';
 
 interface Use3DTiltOptions {
     max?: number;
@@ -9,7 +9,7 @@ interface Use3DTiltOptions {
 }
 
 export const use3DTilt = (
-    ref: RefObject<HTMLElement>,
+    ref: RefObject<HTMLElement | HTMLDivElement | null>,
     options: Use3DTiltOptions = {}
 ) => {
     const {
@@ -29,10 +29,11 @@ export const use3DTilt = (
             element.style.transition = `transform ${speed}ms ${easing}`;
         };
 
-        const handleMouseMove = (e: MouseEvent) => {
+        const handleMouseMove = (e: Event) => {
+            const mouseEvent = e as MouseEvent;
             const rect = element.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            const x = mouseEvent.clientX - rect.left;
+            const y = mouseEvent.clientY - rect.top;
             const width = rect.width;
             const height = rect.height;
 

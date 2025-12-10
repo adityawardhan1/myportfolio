@@ -11,9 +11,7 @@ interface ProjectCardProps {
     image: string;
     github: string;
     demo: string | null;
-    metrics: {
-        [key: string]: string;
-    };
+    metrics: Record<string, string | undefined>;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({

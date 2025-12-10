@@ -7,7 +7,7 @@ interface UseScrollAnimationOptions {
 }
 
 export const useScrollAnimation = (
-    ref: RefObject<HTMLElement>,
+    ref: RefObject<HTMLElement | null>,
     options: UseScrollAnimationOptions = {}
 ) => {
     const { threshold = 0.1, triggerOnce = true } = options;

@@ -25,24 +25,32 @@ const Model: React.FC<ModelProps> = ({ enableRotation, scale, mousePosition, rot
     const { clonedScene, autoScale } = React.useMemo(() => {
         const cloned = scene.clone();
 
+        // Calculate bounding box
         const box = new THREE.Box3().setFromObject(cloned);
         const size = new THREE.Vector3();
         const center = new THREE.Vector3();
         box.getSize(size);
         box.getCenter(center);
 
+        // Calculate scale
         const maxDimension = Math.max(size.x, size.y, size.z);
-        const targetSize = 2.2;
+        const targetSize = 2.5;
         const calculatedScale = maxDimension > 0 ? targetSize / maxDimension : 1;
 
-        // Shift model DOWN to show head
+        // Option A: Standard rotation
+        cloned.rotation.set(0, Math.PI, 0);
+
+        // Position: centered horizontally, lifted slightly (0.1)
         cloned.position.set(
             -center.x,
-            -center.y - (size.y * 0.35),
+            -center.y + (size.y * 0.1), // Reduced to 0.1 to lower the model
             -center.z
         );
 
-        console.log('HEAD VISIBLE - Shifted Y:', (-center.y - (size.y * 0.35)).toFixed(2), 'Size:', size.y.toFixed(2));
+        console.log('🔴 AVATAR LOADED - TIMESTAMP:', new Date().toLocaleTimeString());
+        console.log('📊 Size Y:', size.y.toFixed(2), 'Center Y:', center.y.toFixed(2));
+        console.log('📐 Lift Amount:', (size.y * 0.1).toFixed(2), 'Final Y:', (-center.y + (size.y * 0.1)).toFixed(2));
+        console.log('⚡ Scale:', calculatedScale.toFixed(2));
 
         return { clonedScene: cloned, autoScale: calculatedScale };
     }, [scene]);

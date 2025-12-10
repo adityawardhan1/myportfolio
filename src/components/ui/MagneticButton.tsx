@@ -18,7 +18,6 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
     className = '',
 }) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
-    const [isHovered, setIsHovered] = useState(false);
     const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
 
     const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }));
@@ -38,7 +37,6 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
 
     const handleMouseLeave = () => {
         set({ x: 0, y: 0 });
-        setIsHovered(false);
     };
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -71,7 +69,6 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
             ref={buttonRef}
             onClick={handleClick}
             onMouseMove={handleMouseMove}
-            onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={handleMouseLeave}
             style={{ transform: x.to((x) => `translate3d(${x}px, ${y.get()}px, 0)`) }}
             className={`${baseStyles} ${variantStyles[variant]} ${className}`}
@@ -79,10 +76,10 @@ const MagneticButton: React.FC<MagneticButtonProps> = ({
             {/* Hover Background Effect */}
             <motion.div
                 className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${variant === 'primary'
-                        ? 'bg-gradient-to-r from-accent-cyan to-primary-600'
-                        : variant === 'secondary'
-                            ? 'bg-gradient-to-r from-accent-pink to-accent-purple'
-                            : 'bg-primary-500/20'
+                    ? 'bg-gradient-to-r from-accent-cyan to-primary-600'
+                    : variant === 'secondary'
+                        ? 'bg-gradient-to-r from-accent-pink to-accent-purple'
+                        : 'bg-primary-500/20'
                     }`}
             />
 
