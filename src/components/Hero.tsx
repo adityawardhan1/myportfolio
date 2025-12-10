@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowDown } from 'react-icons/fi';
 import MagneticButton from './ui/MagneticButton';
 import FloatingShapes from './Hero/FloatingShapes';
-import GLBAvatar3D from './GLBAvatar3D';
+import Robot3D from './Robot3D';
 
 const Hero: React.FC = () => {
     const [scrambledText, setScrambledText] = useState('');
@@ -246,8 +246,7 @@ const Hero: React.FC = () => {
                     transition={{ delay: 1.5, duration: 1, ease: 'easeOut' }}
                     className="flex justify-center lg:justify-end"
                 >
-                    <GLBAvatar3D
-                        scale={3.5}
+                    <Robot3D
                         enableRotation={true}
                         className="mt-8 lg:mt-0 w-72 h-72 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px]"
                     />

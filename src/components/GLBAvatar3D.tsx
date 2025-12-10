@@ -37,13 +37,14 @@ const Model: React.FC<ModelProps> = ({ enableRotation, scale, mousePosition, rot
         const targetSize = 2.5;
         const calculatedScale = maxDimension > 0 ? targetSize / maxDimension : 1;
 
-        // Option A: Standard rotation
+        // Fix upside-down avatar: rotate to face camera and flip using negative Y scale
         cloned.rotation.set(0, Math.PI, 0);
+        cloned.scale.set(1, -1, 1); // Flip vertically by inverting Y scale
 
         // Position: centered horizontally, lifted slightly (0.1)
         cloned.position.set(
             -center.x,
-            -center.y + (size.y * 0.1), // Reduced to 0.1 to lower the model
+            -center.y + (size.y * 0.1),
             -center.z
         );
 
