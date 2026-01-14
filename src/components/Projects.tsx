@@ -99,6 +99,21 @@ const Projects: React.FC = () => {
                 execution: 'Parallel Support',
             },
         },
+        {
+            title: 'AgentForge - AI Agent Platform',
+            category: 'Full Stack',
+            description: 'Enterprise AI platform for deploying intelligent conversational agents with GPT-4.',
+            longDescription: 'Full-stack platform enabling enterprises to rapidly deploy intelligent conversational AI agents. Features multi-agent management, real-time GPT-4 conversations, analytics dashboard, knowledge base integration with PDF uploads, and persistent conversation sessions.',
+            tags: ['Django', 'React', 'GPT-4', 'Docker', 'REST API', 'Tailwind CSS'],
+            image: '/project7.jpg',
+            github: 'https://github.com/adityawardhan1/AgentForge',
+            demo: null,
+            metrics: {
+                backend: 'Django 5.0',
+                ai: 'GPT-4 Powered',
+                deployment: 'Docker Ready',
+            },
+        },
     ];
 
     const categories = ['All', 'ML', 'Full Stack', 'Web Dev', 'Automation'];
